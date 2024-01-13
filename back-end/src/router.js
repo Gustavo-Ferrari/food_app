@@ -1,13 +1,12 @@
 const express = require('express');
-const usersController = require('./controllers/usersController');
+const usersRoute = require('./routes/usersRoute');
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
+router.get('/', (_req, res) => {
     res.send('Hello World!');
 });
 
-router.get('/users', usersController.getAllUsers);
-router.get('/users/:id', usersController.getUserById);
+router.use('/users', usersRoute);
 
 module.exports = router;

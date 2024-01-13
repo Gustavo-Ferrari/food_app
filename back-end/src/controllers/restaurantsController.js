@@ -18,9 +18,9 @@ exports.getRestaurantById = async (req, res) => {
     }
 };
 
-exports.getRestaurantProductsById = async (req, res) => {
+exports.getProductsByRestaurantId = async (req, res) => {
     try {
-        const restaurantProducts = await restaurantsModel.getRestaurantProductsById(req.params.id);
+        const restaurantProducts = await restaurantsModel.getProductsByRestaurantId(req.params.id);
         res.status(200).json(restaurantProducts);
     } catch (error) {
         res.status(500).json(error);

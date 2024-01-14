@@ -6,13 +6,16 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ApiService } from '../../services/api-service';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [MatButtonModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, MatIconModule ],
+  imports: [MatButtonModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, MatIconModule, HttpClientModule ],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrl: './login.component.css',
+  providers: [ApiService]
 })
 export class LoginComponent implements OnInit {
   
@@ -21,19 +24,27 @@ export class LoginComponent implements OnInit {
   
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private api: ApiService
     ) { }
 
   ngOnInit() {
+    this.api.get('users').subscribe((data) => {
+      console.log('users', data);
+    });
+
     this.loginForm = this.formBuilder.group({
-      email: ['', Validators.required, Validators.email],
-      password: ['', Validators.required]
+      email: ['gustavo@graodireto.com', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
   });
   }
 
   submit() {
-    console.log('CLICOU');
-    this.router.navigate(['/home']);
+    const email = this.loginForm.get('email')?.value;  
+    const password = this.loginForm.get('password')?.value;
+    console.log('email', email);
+    console.log('password', password);  
+    // this.router.navigate(['/home']);
   }
 
 }

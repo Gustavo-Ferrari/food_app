@@ -6,7 +6,7 @@ body {
 
 .login-logo-containter {
   position: absolute;
-  top: 50%; /* Adjust this value to move the logo up or down */
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
@@ -66,8 +66,13 @@ form {
   max-width: 150px;
 }
 
-#login-btn:hover {
+#login-btn:enabled {
   background-color: #dd453a;
+  color: white;
+}
+
+#login-btn:disabled {
+  background-color: #bdaaa8;
   color: white;
 }
 

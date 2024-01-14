@@ -15,7 +15,7 @@
         </button>
       </mat-form-field>
       
-      <button id="login-btn" mat-raised-button type="button" (click)="submit()" >Entrar</button>
+      <button id="login-btn" mat-raised-button type="button" (click)="submit()" [disabled]="!loginForm.valid" >Entrar</button>
     </form>
   </div>
 </div>

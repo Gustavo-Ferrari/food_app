@@ -12,11 +12,11 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class HomeComponent implements OnInit {
   constructor(
-    private apiService: ApiService
+    private api: ApiService
   ) { }
 
-  async ngOnInit() {
-    await this.apiService.get('restaurants/11/products/').subscribe((data) => {
+  ngOnInit() {
+    this.api.get('restaurants/11/products/').subscribe((data) => {
       console.log(data);
     });
   }

@@ -3,6 +3,25 @@ body {
   padding: 0;
 }
 
+
+.login-logo-containter {
+  position: absolute;
+  top: 50%; /* Adjust this value to move the logo up or down */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-logo {
+  border-radius: 50%; 
+  width: 100%;
+  max-width: 175px; 
+  height: 170px; 
+  box-shadow: -10px 10px 15px 5px rgba(0, 0, 0, 0.75); 
+}
+
 .form-container {
   display: flex;
   flex-direction: column;
@@ -51,3 +70,4 @@ form {
   background-color: #dd453a;
   color: white;
 }
+

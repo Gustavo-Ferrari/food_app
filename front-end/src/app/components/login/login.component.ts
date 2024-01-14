@@ -32,10 +32,6 @@ export class LoginComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.api.get('users').subscribe((data) => {
-      console.log('users', data);
-    });
-
     this.loginForm = this.formBuilder.group({
       email: ['gustavo@graodireto.com', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]

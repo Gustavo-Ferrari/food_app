@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SelectionService } from '../../services/selection-service';
 
 @Component({
   selector: 'app-search-bar',
@@ -6,9 +7,16 @@ import { Component } from '@angular/core';
   styleUrl: './search-bar.component.css'
 })
 export class SearchBarComponent {
+  constructor(
+    private selectionService: SelectionService
+  ) { }
   
   onSelection(event: any) {
-    console.log(event);
+    this.selectionService.changeSelection(event.value);
+  }
+
+  onInputChange(event: any) {
+    this.selectionService.changeInput(event.target.value);
   }
 
 }

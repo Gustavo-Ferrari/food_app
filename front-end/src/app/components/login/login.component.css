@@ -3,7 +3,6 @@ body {
   padding: 0;
 }
 
-
 .login-logo-containter {
   position: absolute;
   top: 50%;
@@ -72,7 +71,16 @@ form {
 }
 
 #login-btn:disabled {
-  background-color: #bdaaa8;
+  background-color: #7975748c;
   color: white;
 }
 
+mat-error {
+  font-size: 1.2em;
+  color: #ffffff;
+  padding: .2em;
+  border-radius: 5px;
+  background-color: #ff0000c4;
+  margin-bottom: 5px;
+  transform: translateY(-10px);
+}

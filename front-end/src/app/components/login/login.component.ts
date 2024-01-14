@@ -8,11 +8,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from '../../services/api-service';
 import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [MatButtonModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, MatIconModule, HttpClientModule ],
+  imports: [MatButtonModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, MatIconModule, HttpClientModule, CommonModule ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
   providers: [ApiService]
@@ -20,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
 export class LoginComponent implements OnInit {
   
   loginForm: FormGroup;
+  submitted = false;
   hide = true;
   
   
@@ -38,7 +40,11 @@ export class LoginComponent implements OnInit {
       email: ['gustavo@graodireto.com', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
   });
-  }
+
+    this.loginForm.get('password')?.valueChanges.subscribe((value) => {
+      this.submitted = false;
+      });
+    }
 
   submit() {
     const email = this.loginForm.get('email')?.value.trim();  
@@ -48,10 +54,13 @@ export class LoginComponent implements OnInit {
       password,
     };
     this.api.post('users', payload).subscribe((data) => {
-      console.log('DATA', data);
+      this.submitted = true;
+      if (!data) {
+        this.loginForm.setErrors({ noMatch: true });
+      } else {
+        this.router.navigate(['/home']);
+      }
     });
-
-    
     // this.router.navigate(['/home']);
   }
 

@@ -14,7 +14,10 @@
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
       </mat-form-field>
-      
+        <mat-error class="mat-error" *ngIf="(!loginForm.valid && submitted)">
+            Usuario ou senha invalidos
+        </mat-error>
+        
       <button id="login-btn" mat-raised-button type="button" (click)="submit()" [disabled]="!loginForm.valid" >Entrar</button>
     </form>
   </div>

@@ -1,0 +1,53 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+form {
+  margin-top: 30em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  height: 300px;
+}
+#email-container {
+  width: 100%;
+  max-width: 250px;
+}
+
+#password-container {
+  width: 100%;
+  max-width: 250px;
+}
+
+.eye-btn {
+  background: none;
+  color: inherit;
+  opacity: .5;
+  border: none;
+  padding-right: 2.5em;
+  cursor: pointer;
+  width: .5em;
+  height: auto;
+  font-size: small;
+}
+
+#login-btn {
+  width: 100%;
+  max-width: 150px;
+}
+
+#login-btn:hover {
+  background-color: #dd453a;
+  color: white;
+}

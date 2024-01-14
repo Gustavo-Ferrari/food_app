@@ -26,6 +26,7 @@ exports.verifyUser = async ({email, password}) => {
     const user = await db.query(
       `select * from public.users where email = $1`, [email]
       );
+      console.log('user', user.rows); 
       
       if (user.rows.length === 0) {
         return false;

@@ -15,7 +15,12 @@ export class HomeComponent implements OnInit {
     private api: ApiService
   ) { }
 
+  userName: string;
+
   ngOnInit() {
+    const fullName = JSON.parse(localStorage.getItem('user') || '{}');
+    this.userName = fullName.split(' ')[0];
+
     this.api.get('restaurants/').subscribe((data) => {
       console.log(data);
     });

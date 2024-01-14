@@ -51,6 +51,7 @@ export class LoginComponent implements OnInit {
     };
     this.api.post('users', payload).subscribe((data) => {
       this.submitted = true;
+      localStorage.setItem('user', JSON.stringify(data));
       if (!data) {
         this.loginForm.setErrors({ noMatch: true });
       } else {

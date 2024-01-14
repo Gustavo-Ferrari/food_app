@@ -10,6 +10,9 @@ export class SearchBarComponent {
   constructor(
     private selectionService: SelectionService
   ) { }
+
+  selectedValue: string = '';
+  searchValue: string = '';
   
   onSelection(event: any) {
     this.selectionService.changeSelection(event.value);
@@ -17,6 +20,14 @@ export class SearchBarComponent {
 
   onInputChange(event: any) {
     this.selectionService.changeInput(event.target.value);
+  }
+
+  clearSearch() {
+    this.selectionService.changeInput('');
+    this.selectionService.changeSelection('');
+    this.searchValue = '';
+    this.selectedValue = '';
+    
   }
 
 }

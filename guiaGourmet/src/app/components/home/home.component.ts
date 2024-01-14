@@ -39,8 +39,7 @@ export class HomeComponent {
           this.displayList = this.product_list;
           break;
       }
-      this.searchValue = input;
-      this.setFilteredList(this.displayList, this.searchValue)
+      this.setFilteredList(this.displayList, input, selection)
     })
   }
 
@@ -54,11 +53,18 @@ export class HomeComponent {
     });
   }
 
-  setFilteredList(displayList: Array<any>, searchValue: string) {
-    console.log('displayList', displayList);
-    console.log('searchValue', searchValue);
-
-    
+  setFilteredList(displayList: Array<any>, searchValue: string, selection: string ) {
+    if (searchValue === '') {
+      this.displayList = displayList;
+    } else if (selection === 'item') {
+      this.displayList = displayList.filter((item: any) => {
+        return item.description.toLowerCase().includes(searchValue.toLowerCase());
+      });
+    } else {
+      this.displayList = displayList.filter((item: any) => {
+        return item.name.toLowerCase().includes(searchValue.toLowerCase());
+      });
+    }
   }
 
 

@@ -7,6 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 export class SelectionService {
   private selectionSource = new BehaviorSubject<string>('');
   private inputSource = new BehaviorSubject<string>('');
+  
   currentSelection = this.selectionSource.asObservable();
   currentInput = this.inputSource.asObservable();
 

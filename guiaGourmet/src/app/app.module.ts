@@ -17,6 +17,7 @@ import { HeaderComponent } from './components/header/header.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { MatSelectModule } from '@angular/material/select';
+import { CardsComponent } from './components/cards/cards.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { MatSelectModule } from '@angular/material/select';
     HomeComponent,
     HeaderComponent,
     SearchBarComponent,
+    CardsComponent,
   ],
   imports: [
     BrowserModule,

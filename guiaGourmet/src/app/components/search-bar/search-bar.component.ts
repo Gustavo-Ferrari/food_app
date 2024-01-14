@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrl: './search-bar.component.css'
 })
 export class SearchBarComponent {
+  
+  onSelection(event: any) {
+    console.log(event);
+  }
 
 }

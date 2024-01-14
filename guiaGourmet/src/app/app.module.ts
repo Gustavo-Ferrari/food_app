@@ -9,13 +9,15 @@ import { HomeComponent } from './components/home/home.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { MatSelectModule } from '@angular/material/select';
+
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
     HttpClientModule,
     CommonModule,
     MatToolbarModule,
+    MatSelectModule,
+    FormsModule,
   ],
   providers: [
     provideClientHydration()

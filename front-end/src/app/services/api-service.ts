@@ -11,6 +11,9 @@ export class ApiService {
         return this.httpClient.get(this.httpPrefix + url);
     }
 
+    post(url: string, data: any) {
+      return this.httpClient.post(this.httpPrefix + url, data);
+    }
 }
 
 

@@ -3,7 +3,7 @@
     <img class="login-logo" src="assets/images/logo.png" alt="logo">
   </div>
   <div class="form-container">
-    <form [formGroup]="loginForm">
+    <form [formGroup]="loginForm" (keydown.enter)="submit()">
       <mat-form-field id="email-container" >
         <input id="email" matInput formControlName="email" type="email" placeholder="Enter your email">
       </mat-form-field>

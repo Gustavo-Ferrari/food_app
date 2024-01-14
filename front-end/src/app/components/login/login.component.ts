@@ -22,10 +22,11 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   hide = true;
   
+  
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private api: ApiService
+    private api: ApiService,
     ) { }
 
   ngOnInit() {
@@ -40,10 +41,17 @@ export class LoginComponent implements OnInit {
   }
 
   submit() {
-    const email = this.loginForm.get('email')?.value;  
-    const password = this.loginForm.get('password')?.value;
-    console.log('email', email);
-    console.log('password', password);  
+    const email = this.loginForm.get('email')?.value.trim();  
+    const password = this.loginForm.get('password')?.value.trim();
+    const payload = {
+      email,
+      password,
+    };
+    this.api.post('users', payload).subscribe((data) => {
+      console.log('DATA', data);
+    });
+
+    
     // this.router.navigate(['/home']);
   }
 

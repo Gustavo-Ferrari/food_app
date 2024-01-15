@@ -40,7 +40,7 @@
 - Angular 17
 - Angular Material
 - RxJs
-- NodeJS
+- NodeJS v18.16.1
 - bcrypt
 - PostgreSQL
 - Docker

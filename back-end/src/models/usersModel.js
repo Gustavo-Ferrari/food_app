@@ -1,5 +1,5 @@
 const db = require("../database");
-const bcrypt = require('bcrypt');
+const bcryptjs = require('bcryptjs');
 
 exports.getAllUsers = () => {
   return db.query(`select name, email from public.users`);
@@ -28,7 +28,7 @@ exports.verifyUser = async ({email, password}) => {
       if (user.rows.length === 0) {
         return false;
       }
-    const match = await bcrypt.compare(password, user.rows[0].password);
+    const match = await bcryptjs.compare(password, user.rows[0].password);
     if (!match) {
       return false;
     }

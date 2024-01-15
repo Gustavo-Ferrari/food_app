@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cards',
@@ -11,16 +12,22 @@ export class CardsComponent {
 
   @Input() set displayList(list: any) {
     this._displayList = list;
-    console.log(this._displayList)
   }
   
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
   
   ngOnInit() {
+    // console.log(this._displayList)
   }
+
   onCardClick(item: any) {
-    console.log(item);
-    // Aqui você pode adicionar a lógica para lidar com o clique no card
+    if (item.phone) {
+      this.router.navigate([`/restaurants/${item.id}`]); 
+    } else {
+      this.router.navigate([`/products/${item.id}`]);
+    }
   }
 
   get displayList() {

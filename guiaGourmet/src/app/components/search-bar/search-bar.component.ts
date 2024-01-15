@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SelectionService } from '../../services/selection-service';
 
 @Component({
@@ -6,7 +6,7 @@ import { SelectionService } from '../../services/selection-service';
   templateUrl: './search-bar.component.html',
   styleUrl: './search-bar.component.css'
 })
-export class SearchBarComponent {
+export class SearchBarComponent implements OnInit {
   constructor(
     private selectionService: SelectionService
   ) { }
@@ -14,6 +14,13 @@ export class SearchBarComponent {
   selectedValue: string = '';
   searchValue: string = '';
   
+
+  ngOnInit(): void {
+    this.clearSearch();
+   
+    
+  }
+
   onSelection(event: any) {
     this.selectionService.changeSelection(event.value);
   }

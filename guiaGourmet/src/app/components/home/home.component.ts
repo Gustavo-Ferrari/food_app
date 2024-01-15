@@ -24,6 +24,8 @@ export class HomeComponent {
   searchValue: string = '';
 
   ngOnInit() {
+    this.setFistRenderList();
+    
     this.getAndSetLists();
     combineLatest([
       this.selectionService.currentSelection,
@@ -31,8 +33,6 @@ export class HomeComponent {
     ]).subscribe(([selection, input]) => {
       switch (selection) {
         case '':
-          this.displayList = this.restaurant_list;
-          break;
         case 'restaurants':
           this.displayList = this.restaurant_list;
           break;
@@ -46,8 +46,15 @@ export class HomeComponent {
       const user = localStorage.getItem('user') ?? '';
       this.user = user.split(' ')[0].replace('"', '');
     }
+
+    this.displayList = this.restaurant_list;
   }
 
+  setFistRenderList() {
+    this.api.get('restaurants').subscribe(data => {
+      this.displayList = data;
+    });
+  }
   getAndSetLists() {
     forkJoin({
       restaurants: this.api.get('restaurants'),

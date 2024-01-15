@@ -19,6 +19,7 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { MatSelectModule } from '@angular/material/select';
 import { CardsComponent } from './components/cards/cards.component';
 import { MatCardModule } from '@angular/material/card';
+import { DetailsComponent } from './components/details/details.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { MatCardModule } from '@angular/material/card';
     HeaderComponent,
     SearchBarComponent,
     CardsComponent,
+    DetailsComponent,
   ],
   imports: [
     BrowserModule,

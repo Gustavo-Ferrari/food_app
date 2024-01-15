@@ -1,0 +1,36 @@
+.toolbar {
+  background-color: #ff0000c4;
+  display: inline-flex;
+  height: 5em;
+}
+
+.img-container{
+  cursor: pointer;
+}
+
+.header-img {
+  width: 100%;
+  max-width: 100px;  
+  margin-top: 5px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 0 5px #fff;
+}
+
+.text-container {
+  margin-left: 40%;
+  transform: translateX(-40%);
+}
+
+mat-toolbar h1 {
+  color: #fff;
+  font-family: 'Itim', cursive;
+  font-size: 2em;
+}
+
+@media screen and (max-width: 540px) {
+  .header-img{
+    min-width: 35px;
+  }
+  
+}

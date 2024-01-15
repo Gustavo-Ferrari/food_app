@@ -1,0 +1,19 @@
+.welcome-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+.welcome-container h1 {
+    font-size: 2rem;
+    font-family: 'Itim', cursive;
+    color: #fff;
+    text-shadow: 2px 2px 4px #000000;
+    transition: all 0.5s ease-in-out;
+  }
+
+@media screen and (max-width: 600px) {
+    .welcome-container h1 {
+      font-size: 1rem;
+    }
+  
+}

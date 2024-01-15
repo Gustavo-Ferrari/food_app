@@ -1,0 +1,12 @@
+
+  <div class="card-grid">
+    <mat-card *ngFor="let item of displayList" (click)="onCardClick(item)" >
+      <img mat-card-image [src]="urlPrefix+ item.image" class="image" alt="Imagem do item">
+      <mat-card-content class="content">
+        <h2 class="name">{{ item.name }}</h2>
+        <p *ngIf="item.phone" class="phone">{{ item.phone }}</p>
+        <p *ngIf="item.address" class="address">{{ item.address }}</p>
+        <p *ngIf="item.description" class="description">{{ item.description }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>

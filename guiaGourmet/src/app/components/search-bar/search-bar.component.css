@@ -1,0 +1,17 @@
+.search-container {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2em;
+  gap: 1em;
+}
+
+.clear-btn {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 0.5em;
+  cursor: pointer;
+  transform: translate(0 , -20%);
+}

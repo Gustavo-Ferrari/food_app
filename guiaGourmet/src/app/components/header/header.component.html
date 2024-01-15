@@ -1,0 +1,11 @@
+<mat-toolbar class="toolbar">
+  <div (click)="onImageClick()" class="img-container">
+    <img class="header-img" src="../../../assets/images/logo.png" alt="logo">
+  </div>
+  <div class="text-container">
+    <h1>Guia Gourmet</h1>
+  </div>
+</mat-toolbar>
+<div *ngIf="!noSearch">
+  <app-search-bar></app-search-bar>
+</div>

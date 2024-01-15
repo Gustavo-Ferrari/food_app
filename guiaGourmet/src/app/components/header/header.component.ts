@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -6,7 +7,12 @@ import { Component, Input } from '@angular/core';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent  {
+
+  constructor(private router: Router) { }
+
   @Input() noSearch: boolean = false;
 
-
+  onImageClick() {
+    this.router.navigate(['/home']);
+  }
 }

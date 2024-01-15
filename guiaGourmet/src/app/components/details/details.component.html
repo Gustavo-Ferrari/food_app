@@ -1,8 +1,11 @@
 
 <app-header [noSearch]="true"></app-header>
 
-<div class="restaurant-component">
+<div *ngIf="restaurantInfo" class="restaurant-component">
   <app-cards [displayList]="restaurantInfo"></app-cards>
+</div>
+<div *ngIf="productInfo" class="product-component">
+  <app-cards [displayList]="productInfo"></app-cards>
 </div>
 <div class="list-component">
   <app-cards [displayList]="displayList"></app-cards>

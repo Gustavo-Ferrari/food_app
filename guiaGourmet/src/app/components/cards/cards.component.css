@@ -1,6 +1,9 @@
 mat-card {
+  width: 100%;
+  max-width: 300px;
   background-color: #f0aaaa73;
-  ;
+  margin-left: 50%;
+  transform: translateX(-50%);
 }
 
 .card-container {
@@ -37,14 +40,35 @@ mat-card {
   align-items: center;
 }
 
-.centered {
+.name {
   text-align: center;
+  text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.5);
+  font-family: 'Itim', cursive;
+  font-size: 2em;
 }
 
-.right {
+.address {
   background-color: #ff0000c4;
   border: 1px solid #ffffff;
   padding: .5em;
   color: #ffffff;
   align-self: flex-end;
+}
+
+.phone {
+  background-color: #ff0000c4;
+  border: 1px solid #ffffff;
+  padding: .5em;
+  color: #ffffff;
+  align-self: flex-end;
+}
+
+.description {
+  text-align: center;
+  color: white;
+  /* text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.5); */
+  font-family: 'Itim', cursive;
+  font-weight: 700;
+  font-size: 1.2em;
+  background-color: #ff000098;
 }

@@ -1,14 +1,13 @@
 const db = require("../database");
 const bcrypt = require('bcrypt');
-const saltRounds = 10;
 
 exports.getAllUsers = () => {
-  return db.query(`select * from public.users`);
+  return db.query(`select name, email from public.users`);
 };
 
 exports.getUserById = (id) => {
   return db.query(
-    `select * from public.users where id = $1`, [id]
+    `select name, email from public.users where id = $1`, [id]
     )
     .then((result) => {
       return result.rows;
@@ -24,7 +23,7 @@ exports.getUserById = (id) => {
 exports.verifyUser = async ({email, password}) => {
   try {
     const user = await db.query(
-      `select * from public.users where email = $1`, [email]
+      `select name,password from public.users where email = $1`, [email]
       );
       if (user.rows.length === 0) {
         return false;
@@ -33,7 +32,7 @@ exports.verifyUser = async ({email, password}) => {
     if (!match) {
       return false;
     }
-    return user.rows[0];
+    return {name: user.rows[0].name};
   } catch (error) {
     return {
       message: error.message,

@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class CardsComponent {
 
+  urlPrefix = '../../../assets/images/';
   private _displayList: any = [];
 
   @Input() set displayList(list: any) {

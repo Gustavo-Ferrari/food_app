@@ -21,13 +21,13 @@ export class LoginComponent {
     private api: ApiService,
     ) { 
       this.loginForm = this.formBuilder.group({
-        email: ['gustavo@graodireto.com', [Validators.required, Validators.email]],
+        email: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required, Validators.minLength(6)]]
       });
     }
 
   ngOnInit() {
-    this.loginForm.get('password')?.valueChanges.subscribe((value) => {
+    this.loginForm.get('password')?.valueChanges.subscribe(() => {
       this.submitted = false;
       });
     }

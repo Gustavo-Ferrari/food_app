@@ -16,9 +16,8 @@ export class SearchBarComponent implements OnInit {
   
 
   ngOnInit(): void {
-    this.clearSearch();
-   
-    
+    this.selectedValue = 'restaurante';
+    this.selectionService.changeSelection(this.selectedValue);
   }
 
   onSelection(event: any) {

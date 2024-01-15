@@ -32,10 +32,10 @@ export class HomeComponent {
       this.selectionService.currentInput
     ]).subscribe(([selection, input]) => {
       switch (selection) {
-        case '':
-        case 'restaurants':
+        case 'restaurante':
           this.displayList = this.restaurant_list;
           break;
+        case 'descrição':
         case 'item':
           this.displayList = this.product_list;
           break;
@@ -66,16 +66,21 @@ export class HomeComponent {
   }
 
   setFilteredList(displayList: Array<any>, searchValue: string, selection: string ) {
-    if (searchValue === '') {
-      this.displayList = displayList;
-    } else if (selection === 'item') {
-      this.displayList = displayList.filter((item: any) => {
-        return item.description.toLowerCase().includes(searchValue.toLowerCase());
-      });
-    } else {
-      this.displayList = displayList.filter((item: any) => {
-        return item.name.toLowerCase().includes(searchValue.toLowerCase());
-      });
+    switch (selection) {
+      case '':
+        this.displayList = displayList;
+        break;
+      case 'item':
+      case 'restaurante':
+        this.displayList = displayList.filter((rest: any) => {
+          return rest.name.toLowerCase().includes(searchValue.toLowerCase());
+        });
+        break;
+      case 'descrição':
+        this.displayList = displayList.filter((item: any) => {
+          return item.description.toLowerCase().includes(searchValue.toLowerCase());
+        });
+        break;
     }
   }
 

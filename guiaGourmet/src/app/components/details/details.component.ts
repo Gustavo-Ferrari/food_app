@@ -15,7 +15,8 @@ export class DetailsComponent implements OnInit {
     private api: ApiService
   ) { }
 
-  restaurantInfo: any = {};
+  productInfo: any = [];
+  restaurantInfo: any = [];
   displayList: any = [];
 
   ngOnInit() {
@@ -23,6 +24,7 @@ export class DetailsComponent implements OnInit {
       if (url[0].path === 'restaurants') {
         this.getRestaurantInfo(url[1].path);
       } else if (url[0].path === 'products') {
+        this.getProductInfo(url[1].path);
       }
     });
   }
@@ -36,7 +38,23 @@ export class DetailsComponent implements OnInit {
   getRestaurantMenu(id:string) {
     this.api.get(`restaurants/${id}/products`).subscribe(data => {
       this.displayList = data;
+      this.productInfo = null;
     });
   }
+
+  getProductInfo(id:string) {
+    this.api.get(`products/${id}`).subscribe(data => {
+      this.productInfo = data;
+      this.getProductRestaurantList(id);
+    });
+  }
+
+  getProductRestaurantList(id:string) {
+    this.api.get(`products/${id}/restaurants`).subscribe(data => {
+      this.displayList = data;
+      this.restaurantInfo = null;
+    });
+  }
+
 
 }

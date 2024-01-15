@@ -2,7 +2,10 @@
   background-color: #ff0000c4;
   display: inline-flex;
   height: 5em;
+}
 
+.img-container{
+  cursor: pointer;
 }
 
 .header-img {
@@ -27,7 +30,7 @@ mat-toolbar h1 {
 
 @media screen and (max-width: 540px) {
   .header-img{
-    display: none;
+    min-width: 35px;
   }
   
 }

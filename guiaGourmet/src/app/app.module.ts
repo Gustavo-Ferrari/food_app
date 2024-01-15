@@ -18,6 +18,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { MatSelectModule } from '@angular/material/select';
 import { CardsComponent } from './components/cards/cards.component';
+import { MatCardModule } from '@angular/material/card';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { CardsComponent } from './components/cards/cards.component';
     MatToolbarModule,
     MatSelectModule,
     FormsModule,
+    MatCardModule,
   ],
   providers: [
     provideClientHydration()

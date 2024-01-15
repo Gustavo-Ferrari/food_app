@@ -19,6 +19,7 @@ export class HomeComponent {
   restaurant_list: any = [];
   product_list: any = [];
   displayList: any = [];
+  user: string = '';
 
   searchValue: string = '';
 
@@ -41,6 +42,10 @@ export class HomeComponent {
       }
       this.setFilteredList(this.displayList, input, selection)
     })
+    if (typeof window !== 'undefined') {
+      const user = localStorage.getItem('user') ?? '';
+      this.user = user.split(' ')[0].replace('"', '');
+    }
   }
 
   getAndSetLists() {

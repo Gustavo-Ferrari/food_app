@@ -1,0 +1,18 @@
+.card-container {
+  background-color: rgba(209, 206, 206, 0.349);
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1600px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 1rem;
+  justify-content: center;
+  
+  margin-top: 2rem;
+  padding: 5em
+}

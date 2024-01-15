@@ -19,11 +19,10 @@
     3. Rode `npm install` em ambas
     4. No backend:
       - Rode `docker-compose up` para criar o banco de dados PostgreSQL em um container
-      - Em outro terminal rode o comando `npm start`
       - Abra seu gerenciador de banco de dados (i.e. DBeaver)
       - Copie o conteúdo do arquivo init.txt contido na raiz deste projeto
       - Rode os comandos para popular o banco de dados
-        **Essa etapa é crucial para o funcionamento da aplicação**
+      - Em outro terminal rode o comando `npm start`
     5. Na pasta grao_direto
       - Rode `ng serve --open`
       

@@ -25,6 +25,7 @@
       - Rode os comandos para popular o banco de dados
       - Em outro terminal rode o comando `npm start`
     5. Na pasta grao_direto
+        *Node v18.16.1 necessária para rodar o Angular 17*
       - Rode `ng serve --open`
       
 ## Credencias de acesso

@@ -1,0 +1,116 @@
+--Cria tabela de usuários
+CREATE TABLE users (
+	id SERIAL PRIMARY KEY,
+	name varchar(50) NOT NULL,
+	email varchar(50) NOT NULL UNIQUE,
+	password varchar(155) NOT NULL,
+	created_at TIMESTAMP NOT NULL DEFAULT NOW()
+);
+
+-- Cria tabela de estabelecimentos
+CREATE TABLE restaurants (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  phone VARCHAR(25) NOT NULL,
+  address varchar(255) NOT NULL,
+  image varchar (255),
+  created_at TIMESTAMP NOT NULL DEFAULT NOW()
+);
+
+-- Cria a tabela dos tipos de produtos
+CREATE TABLE product_types (
+	id SERIAL PRIMARY KEY,
+	TYPE varchar(25)
+);
+
+--Cria a tabela de produtos
+CREATE TABLE products (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  price DECIMAL NOT NULL,
+  description TEXT NOT NULL,
+  type_id INTEGER REFERENCES product_types(id),
+  image varchar (255),
+  created_at TIMESTAMP NOT NULL DEFAULT NOW()
+);
+
+--cria tabela de relação entre estabelecimentos e produtos
+CREATE TABLE restaurants_products (
+  restaurant_id INT,
+  product_id INT,
+  PRIMARY KEY (restaurant_id, product_id),
+  FOREIGN KEY (restaurant_id) REFERENCES restaurants(id),
+  FOREIGN KEY (product_id) REFERENCES products(id)
+);
+
+-- Insere os tipos de produtos
+INSERT INTO product_types (type) VALUES 
+('entrada'), 
+('prato_principal'), 
+('acompanhamento'), 
+('sobremesa'), 
+('bebidas');
+
+-- Insere 30 produtos diversos
+INSERT INTO products (name, type_id, price, description, image) VALUES 
+('Agua sem gas', 5, 4.00, 'Agua sem gas natural', ''),
+('Batata frita', 1, 21.9, 'Batatas fritas crocantes', ''),
+('Hamburger', 2, 34.99, 'Hamburger com queijo, alface e tomate', ''),
+('Arroz', 3, 12.0, 'Arroz branco cozido', ''),
+('Sorvete', 4, 18.0, 'Sorvete de baunilha com calda de chocolate', ''),
+('Pizza', 2, 65.9, 'Pizza de mussarela com tomate e orégano', ''),
+('Salada', 1, 23.9, 'Salada de alface, tomate e cenoura', ''),
+('Frango grelhado', 2, 70.9, 'Frango grelhado com ervas finas', ''),
+('Suco de laranja', 5, 11.9, 'Suco de laranja natural', ''),
+('Pudim', 4, 16.8 ,'Pudim de leite condensado', ''),
+('Coca Cola', 5, 6.00, 'Refrigerante de cola', ''),
+('Pepsi', 5, 6.00, 'Refrigerante de cola', ''),
+('Guaraná', 5, 6.00, 'Refrigerante de guaraná', ''),
+('Fanta', 5, 6.00, 'Refrigerante de laranja', ''),
+('Sprite', 5, 6.00, 'Refrigerante de limão', ''),
+('Hamburger Vegano', 2, 40.99, 'Hamburger vegano com alface e tomate', ''),
+('Pizza Vegana', 2, 75.9, 'Pizza vegana com tomate e orégano', ''),
+('Salada de Frutas', 4, 25.9, 'Salada de frutas frescas', ''),
+('Frango Xadrez', 2, 80.9, 'Frango xadrez com legumes', ''),
+('Suco de Uva', 5, 12.9, 'Suco de uva natural', ''),
+('Bolo de Chocolate', 4, 20.8 ,'Bolo de chocolate com cobertura', ''),
+('Bolo de Cenoura', 4, 20.8 ,'Bolo de cenoura com cobertura de chocolate', ''),
+('Bolo de Fubá', 4, 20.8 ,'Bolo de fubá cremoso', ''),
+('Torta de Limão', 4, 25.8 ,'Torta de limão com merengue', ''),
+('Torta de Morango', 4, 25.8 ,'Torta de morango com chantilly', ''),
+('Macarrão à Bolonhesa', 2, 35.9, 'Macarrão à bolonhesa com queijo ralado', ''),
+('Macarrão ao Alho e Óleo', 2, 30.9, 'Macarrão ao alho e óleo com azeitonas', ''),
+('Macarrão à Carbonara', 2, 40.9, 'Macarrão à carbonara com bacon e queijo', ''),
+('Lasanha à Bolonhesa', 2, 45.9, 'Lasanha à bolonhesa com queijo gratinado', ''),
+('Lasanha de Frango', 2, 45.9, 'Lasanha de frango com queijo gratinado', '');
+
+-- Cria 10 estabalecimentos diversos
+INSERT INTO restaurants (name, phone, address, image) VALUES 
+('Restaurante Alegria', '(34)998887776', 'Rua das Flores, 123', ''),
+('Churrascaria Espeto', '(34)995566674', 'Av. do Sol, 456', ''),
+('Padaria Pão Quente', '(34)9945678902', 'Rua do Trigo, 789', ''),
+('Lanchonete Rápido', '(34)997889900', 'Av. da Corrida, 321', ''),
+('Restaurante Fino Paladar', '(34)992334455', 'Rua dos Sabores, 654', ''),
+('Restaurante Bom Sabor', '(34)992333404', 'Rua da Alegria, 987', ''),
+('Pizzaria Delícia', '(34)996667778', 'Av. da Pizza, 654', ''),
+('Churrascaria Tudo no Espeto', '(34)992223334', 'Rua do Fogo, 321', ''),
+('Restaurante Sabor da Terra', '(34)986667778', 'Av. dos Sabores, 987', ''),
+('Lanchonete da Esquina', '(34)98445556', 'Rua da Esquina, 123', '');
+
+-- Popula a tabela de relação de forma aletória, assinalando o produto ao estabelecimento, caso já não haja a relacão
+DO
+$do$
+DECLARE
+   r_id INTEGER;
+   p_id INTEGER;
+BEGIN
+   FOR r_id IN (SELECT id FROM restaurants) LOOP
+      FOR i IN 1..10 LOOP
+         SELECT id INTO p_id FROM products WHERE id NOT IN (
+            SELECT product_id FROM restaurants_products WHERE restaurant_id = r_id
+         ) ORDER BY RANDOM() LIMIT 1;    
+            INSERT INTO restaurants_products (restaurant_id, product_id) VALUES (r_id, p_id);
+      END LOOP;
+   END LOOP;
+END
+$do$;

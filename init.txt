@@ -43,6 +43,9 @@ CREATE TABLE restaurants_products (
   FOREIGN KEY (product_id) REFERENCES products(id)
 );
 
+--insere o usuário
+INSERT INTO public.users (name, email, "password") VALUES ('Geralt of Rivia', 'geralt@cdproject.com', '$2a$10$zljkxCnd5RBZFdFlhqfnlOf9fQR7JrUHh1RCBz7NiCMyOAB2mzyzC');
+
 -- Insere os tipos de produtos
 INSERT INTO product_types (type) VALUES 
 ('entrada'), 

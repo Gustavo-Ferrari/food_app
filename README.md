@@ -1,5 +1,7 @@
 # Guia Gourmet
 
+<img src="/guiaGourmet/src/assets/images/logo.png" width="300">
+
 ## Descrição do Projeto
 
     Este projeto é parte do processo seletivo para a Grão Direto.
@@ -7,9 +9,9 @@
     
     É possivel filtrar por estabelecimentos, produtos ou pela descrição do produto.
     Ao clicar no card de um estabelecimento, o usuário é redirecionado para a tela
-    de detalhes do estabelecimento, que mostra todos os produtos vendidos nele.
-    Ao clicar no card de um produto, a tela de detaalhes mostra quais são os estabelecimentos
-    que vendem aquele produto selecionado. 
+    de detalhes do mesmo, que mostra todos os produtos vendidos nele.
+    Ao clicar no card de um produto, a tela de detalhes mostra quais são os estabelecimentos
+    que vendem o produto selecionado. 
 
 ## Configuração
     1. Clone esse repositório
@@ -31,7 +33,7 @@
     **email**: geralt@cdproject.com
     **senha**: 123456
     
-    Essa aplicação usa bcrypt para validar a senha.
+    Essa aplicação usa bcrypt para validar o login.
 
 ## Tecnologias Utilizadas
 
@@ -41,7 +43,8 @@
 - NodeJS
 - bcrypt
 - PostgreSQL
-- 
+- Docker
+
 ## Exemplo de telas
 
 <img src="/images/login01.png" width="300">

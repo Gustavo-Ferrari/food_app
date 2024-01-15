@@ -18,6 +18,7 @@
     2. Acesse separadamente as pastas back-end e grao_direto (esta pasta contém o front-end)
     3. Rode `npm install` em ambas
     4. No backend:
+      - Renomeie o arquivo env.example para .env
       - Rode `docker-compose up` para criar o banco de dados PostgreSQL em um container
       - Abra seu gerenciador de banco de dados (i.e. DBeaver)
       - Copie o conteúdo do arquivo init.txt contido na raiz deste projeto

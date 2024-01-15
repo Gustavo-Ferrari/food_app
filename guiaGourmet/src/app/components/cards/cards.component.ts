@@ -18,9 +18,6 @@ export class CardsComponent {
     private router: Router
   ) { }
   
-  ngOnInit() {
-    // console.log(this._displayList)
-  }
 
   onCardClick(item: any) {
     if (item.phone) {

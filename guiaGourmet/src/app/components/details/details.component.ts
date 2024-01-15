@@ -23,7 +23,6 @@ export class DetailsComponent implements OnInit {
       if (url[0].path === 'restaurants') {
         this.getRestaurantInfo(url[1].path);
       } else if (url[0].path === 'products') {
-        console.log('This is a products page');
       }
     });
   }
@@ -37,8 +36,6 @@ export class DetailsComponent implements OnInit {
   getRestaurantMenu(id:string) {
     this.api.get(`restaurants/${id}/products`).subscribe(data => {
       this.displayList = data;
-      console.log('restaurante', [this.restaurantInfo]);
-      console.log('menu', this.displayList);
     });
   }
 

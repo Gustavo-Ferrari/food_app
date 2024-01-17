@@ -28,7 +28,7 @@
         *Node v18.16.1 necessária para rodar o Angular 17*
       - Rode `ng serve --open`
       
-## Credencias de acesso
+## Credenciais de acesso
     Para acessar essa aplicação é necessário logar com as seguintes credenciais:
     
     **email**: geralt@cdproject.com

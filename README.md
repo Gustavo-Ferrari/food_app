@@ -4,7 +4,6 @@
 
 ## Descrição do Projeto
 
-    Este projeto é parte do processo seletivo para a Grão Direto.
     O objetivo é desenvolver uma aplicação responsiva de menu, com restaurantes e produtos.
     
     É possivel filtrar por estabelecimentos, produtos ou pela descrição do produto.
